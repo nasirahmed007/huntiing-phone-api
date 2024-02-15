@@ -1,3 +1,4 @@
+
 const loadPhone = async (searchText = '13', isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
@@ -73,9 +74,18 @@ const showPhoneDetails = (phone) => {
 
     showDetailContainer.innerHTML = `
         <img src="${phone.image}" alt="" />
-        <p><span>Storage:</span>${phone?.mainFeatures?.storage}</p>
-        <p><span>GPS:</span>${phone.others?.GPS || 'No GPS available'}</p>
-        <p><span>GPS:</span>${phone.others?.GPS ? phone.others.GPS : 'No GPS available in this device'}</p>
+        <p><span>Release Date: </span>${phone?.releaseDate}</p>
+        <p><span>Storage: </span>${phone?.mainFeatures?.storage}</p>
+        <p><span>Display Size: </span>${phone?.mainFeatures?.displaySize}</p>
+        <p><span>Memory: </span>${phone?.mainFeatures?.memory}</p>
+        <p><span>Chip-set: </span>${phone?.mainFeatures?.chipSet}</p>
+        <p><span>Bluetooth: </span>${phone?.others?.Bluetooth || 'Ato Jani ki hobe !!!'}</p>
+        <p><span>Wi-Fi: </span>${phone?.others?.WLAN || 'Ato Jani ki hobe !!!'}</p>
+        <p><span>GPS: </span>${phone?.others?.GPS || 'Ato Jani ki hobe !!!'}</p>
+        <p><span>NFC: </span>${phone?.others?.NFC || 'Ato Jani ki hobe !!!'}</p>
+        <p><span>USB: </span>${phone?.others?.USB || 'Ato Jani ki hobe !!!'}</p> 
+        <p><span>GPS: </span>${phone.others?.GPS || 'No GPS available'}</p>
+        <p><span>GPS: </span>${phone.others?.GPS ? phone.others.GPS : 'No GPS available in this device'}</p>
     `
 
     // show the modal
