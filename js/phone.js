@@ -5,6 +5,11 @@ const loadPhone = async (searchText = '13', isShowAll) => {
     const phones = data.data;
     // console.log(phones);
     displayPhones(phones, isShowAll);
+    const res1 = await fetch(`https://freetestapi.com/api/v1/laptops?search=${searchText}`);
+    const data1 = await res1.json();
+    const laptops = data1; // Assuming data is directly the array of laptops
+    displayLaptops(laptops, isShowAll);
+
 }
 
 

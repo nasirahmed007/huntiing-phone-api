@@ -1,12 +1,7 @@
-const loadLaptops = async (searchText = '', isShowAll) => {
-    const res = await fetch(`https://freetestapi.com/api/v1/laptops?search=${searchText}`);
-    const data = await res.json();
-    const laptops = data; // Assuming data is directly the array of laptops
-    displayLaptops(laptops, isShowAll);
-}
+
 
 const displayLaptops = (laptops, isShowAll) => {
-    const laptopContainer = document.getElementById('phone-container');
+    const laptopContainer = document.getElementById('laptop-container');
     laptopContainer.textContent = ''; // Clear previous content
 
     // Display only first 12 laptops if not show All
@@ -24,7 +19,7 @@ const displayLaptops = (laptops, isShowAll) => {
                 <h2 class="card-title">${laptop.brand} ${laptop.model}</h2>
                 <p>${laptop.description}</p>
                 <div class="card-actions justify-center">
-                    <button onclick="handleShowDetail(${laptop.id})" class="btn btn-primary">Show Details</button>
+                    <button onclick="handleShowLoptopDetail(${laptop.id})" class="btn btn-primary">Show Details</button>
                 </div>
             </div>
         `;
@@ -35,7 +30,7 @@ const displayLaptops = (laptops, isShowAll) => {
     toggleLoadingSpinner(false);
 }
 
-const handleShowDetail = async (id) => {
+const handleShowLoptopDetail = async (id) => {
     const res = await fetch(`https://freetestapi.com/api/v1/laptops/${id}`);
     const laptop = await res.json();
     showLaptopDetails(laptop);
@@ -64,16 +59,16 @@ const showLaptopDetails = (laptop) => {
 }
 
 // Handle search button
-const handleSearch = (isShowAll) => {
+const handleLaptopSearch = (isShowAll) => {
     toggleLoadingSpinner(true);
-    const searchField = document.getElementById('search-field');
+    const searchField = document.getElementById('laptop-search-field');
     const searchText = searchField.value;
     loadLaptops(searchText, isShowAll);
 }
 
 // Handle show all
-const handleShowAll = () => {
-    handleSearch(true);
+const handleShowAllLaptop = () => {
+    handleLaptopSearch(true);
 }
 
 // Initial load
